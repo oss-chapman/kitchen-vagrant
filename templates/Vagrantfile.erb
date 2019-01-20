@@ -190,6 +190,8 @@ Vagrant.configure("2") do |c|
            ids << "\"#{id}\""
          end %>
     p.customize ["modifyvm", :id, "--cpuidset", <%= ids.join(', ') %>]
+    <% elsif key == :default_nic_type %>
+    p.default_nic_type = "<%= value %>"
     <% else %>
     p.customize ["modifyvm", :id, "--<%= key %>", "<%= value %>"]
     <% end %>
